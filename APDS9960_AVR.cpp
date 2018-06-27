@@ -15,10 +15,7 @@ APDS9960_AVR::APDS9960_AVR()
 	* Initialize the I2C Interface of the MCU
 	*
 	*****************************************/
-	
-	//DDRD &= ~((1<<DDD0) | (1<<DDD1));		//activate Pins for SDA and SCL function
-	//PORTD &= ~((1<<PD0) | (1<<PD1));			//activate internal pull-ups
-	
+			
 	// initialize TWI clock: 
 	
 	TWSR &= ~((1 << TWPS1) | (1 << TWPS0));								// no prescaler 
