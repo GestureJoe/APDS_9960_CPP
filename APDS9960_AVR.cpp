@@ -22,7 +22,7 @@ APDS9960_AVR::APDS9960_AVR()
 	// initialize TWI clock: 
 	
 	TWSR &= ~((1 << TWPS1) | (1 << TWPS0));								// no prescaler 
-	TWBR = ((8000000UL/SCL_CLOCK)-16)/2;  // must be > 10 for stable operation 
+	TWBR = ((16000000UL/SCL_CLOCK)-16)/2;  // must be > 10 for stable operation 
 	
 	
 	//Initialize Errorcode LED
