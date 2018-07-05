@@ -9,7 +9,7 @@
 #ifndef APDS9960_AVR_H_
 #define APDS9960_AVR_H_
 
-#define F_CPU 32000000
+#define F_CPU 16000000UL
 
 //I2C clock in Hz
 #define SCL_CLOCK  400000L
@@ -17,7 +17,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <util/twi.h>
-#include <stdio.h>
+#include <stdint.h>
 
 //APDS-9960 I2C Address
 #define APDS9960_I2C_ADDR 0x39
@@ -83,13 +83,15 @@
 
 //Constants for Sensor system Parameters
 //Proximity Engine Constants
-#define DEFAULT_PPULSE		0x90	//16 Proximity Pulses, 16Âµs pulse length
+#define DEFAULT_PPULSE		0x90	//16 Proximity Pulses, 16µs pulse length
 #define DEFAULT_CONTROL		0x08	//100mA, 4x PS Gain
 #define DEFAULT_CONFIG2		0x30	//LED-Boost 300%
 #define DEFAULT_POFFSET_UR	6
 #define DEFAULT_POFFSET_DL	6
 #define DEFAULT_PILT		0
 #define DEFAULT_PIHT		50
+#define MAX_PIHT			255
+#define HYST_PILT			DEFAULT_PIHT
 #define DEFAULT_PPERS		1
 
 //Gesture Engine Constants
@@ -128,14 +130,17 @@ public:
 	
 	//Proximity Engine related functions
 		//Setter functions
-	bool set_pilt();
-	bool set_piht();
+	bool set_pilt(uint8_t _pilt);
+	bool set_piht(uint8_t _piht);
 	bool set_pers();
+	bool set_pien();
+	bool disable_pien();
 	bool set_pulseCount();
 	bool set_ControlRegisterOne();
 	bool set_ConfigRegisterTwo();
 	bool set_proxOff_UR();
 	bool set_proxOff_DL();
+	bool clear_pint();
 	
 		//Getter functions
 	uint8_t get_pilt();
