@@ -83,7 +83,7 @@
 
 //Constants for Sensor system Parameters
 //Proximity Engine Constants
-#define DEFAULT_PPULSE		0x90	//16 Proximity Pulses, 16µs pulse length
+#define DEFAULT_PPULSE		0x90	//16 Proximity Pulses, 16Âµs pulse length
 #define DEFAULT_CONTROL		0x08	//100mA, 4x PS Gain
 #define DEFAULT_CONFIG2		0x30	//LED-Boost 300%
 #define DEFAULT_POFFSET_UR	6
